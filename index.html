@@ -1,0 +1,1230 @@
+```html
+<!doctype html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>李一凡｜个人简历</title>
+
+  <!-- Font Awesome (for portfolio icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: ['class'],
+      theme: {
+        extend: {
+          boxShadow: {
+            softGlow: '0 0 40px rgba(255,255,255,0.06), 0 0 120px rgba(255,255,255,0.03)',
+            innerGlow: 'inset 0 0 24px rgba(255,255,255,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --bg0:#05060a;
+      --bg1:#0b0d15;
+      --fg:#ffffff;
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.55);
+      --stroke:rgba(255,255,255,.10);
+      --stroke2:rgba(255,255,255,.16);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body{
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(900px 520px at 85% 10%, rgba(168, 255, 244,.08), transparent 55%),
+        radial-gradient(900px 680px at 45% 110%, rgba(145, 190, 255,.08), transparent 55%),
+        linear-gradient(180deg, var(--bg0), #03040a 60%, #02030a);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display","SF Pro Text","Inter", "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      letter-spacing: -0.01em;
+    }
+
+    /* Reveal 动画 */
+    .reveal{
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 650ms var(--ease), transform 650ms var(--ease);
+      will-change: transform, opacity;
+    }
+    .reveal.is-visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 统一加强：液态玻璃层级 */
+    .glass-hover{
+      position: relative;
+      overflow: hidden;
+      border-color: rgba(255,255,255,0.10);
+      transition: border-color 520ms var(--ease);
+    }
+    .glass-hover::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(700px 260px at 18% 0%, rgba(255,255,255,0.18), transparent 55%),
+        radial-gradient(460px 240px at 92% 10%, rgba(147,197,253,0.14), transparent 60%),
+        radial-gradient(420px 220px at 45% 120%, rgba(34,211,238,0.10), transparent 58%);
+      opacity: 0;
+      transition: opacity 520ms var(--ease);
+      pointer-events:none;
+      z-index: 0;
+    }
+    .glass-hover:hover::before{
+      opacity: 1;
+    }
+
+    .glass-hover::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        linear-gradient(110deg, transparent 28%, rgba(255,255,255,.30) 50%, transparent 64%);
+      transform: translateX(-125%) skewX(-18deg);
+      opacity: 0;
+      filter: blur(0.4px);
+      transition:
+        opacity 380ms var(--ease),
+        transform 900ms var(--ease);
+      pointer-events:none;
+      mix-blend-mode: screen;
+      z-index: 0;
+    }
+    .glass-hover:hover::after{
+      opacity: .98;
+      transform: translateX(42%) skewX(-18deg);
+    }
+
+    /* =========================
+       统一加强：Portfolio 作品卡
+       ========================= */
+    .result-card{
+      position: relative;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      text-decoration:none;
+      color: inherit;
+      min-height: 46px;
+
+      background-color: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.10);
+      transition:
+        transform 520ms var(--ease),
+        box-shadow 520ms var(--ease),
+        border-color 520ms var(--ease),
+        background-color 520ms var(--ease);
+      z-index: 1; /* 确保压过 glass-hover::before/::after */
+    }
+
+    .result-card i{
+      width: 18px;
+      text-align:center;
+      opacity: .94;
+      flex: 0 0 auto;
+      transition: opacity 380ms var(--ease), transform 520ms var(--ease);
+      transform: translateZ(0);
+    }
+
+    .result-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(520px 120px at 15% 20%, rgba(255,255,255,0.26), transparent 55%),
+        radial-gradient(420px 140px at 85% 0%, rgba(147,197,253,0.20), transparent 62%);
+      opacity: 0;
+      transition: opacity 520ms var(--ease);
+      pointer-events:none;
+      z-index: 0;
+    }
+    .result-card:hover::before{
+      opacity: 1;
+    }
+
+    .result-card:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.22);
+      background-color: rgba(255,255,255,0.05);
+      box-shadow:
+        0 30px 90px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(255,255,255,0.08) inset;
+    }
+
+    .result-card:hover i{
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .result-card--disabled{
+      cursor: default;
+      pointer-events: auto;
+    }
+
+    /* 向下箭头呼吸 */
+    .pulse-arrow{
+      animation: pulseArrow 2.2s ease-in-out infinite;
+      filter: drop-shadow(0 10px 30px rgba(255,255,255,.10));
+    }
+    @keyframes pulseArrow{
+      0%, 100% { transform: translateY(0); opacity: .9; }
+      50% { transform: translateY(10px); opacity: .55; }
+    }
+
+    /* Grain */
+    .grain{
+      pointer-events:none;
+      position: fixed;
+      inset: -40%;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      opacity: .06;
+      transform: translateZ(0);
+      mix-blend-mode: overlay;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html { scroll-behavior: auto; }
+      .pulse-arrow{ animation: none; }
+      .glass-hover::after{ transition: none; }
+      .glass-hover::before{ transition: none; opacity: 1; }
+      .result-card::before{ transition: none; opacity: 1; }
+      .reveal{ transition: none; opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <!-- 背景液态气泡（视差） -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute -top-24 left-1/6 h-72 w-72 rounded-full bg-white/10 blur-3xl" data-parallax="0.03"></div>
+    <div class="absolute top-1/4 right-1/12 h-80 w-80 rounded-full bg-cyan-300/10 blur-3xl" data-parallax="0.05"></div>
+    <div class="absolute bottom-[-220px] left-1/3 h-96 w-96 rounded-full bg-blue-300/8 blur-3xl" data-parallax="0.04"></div>
+  </div>
+
+  <!-- 顶部导航（极简） -->
+  <header class="sticky top-0 z-50">
+    <div class="mx-auto max-w-6xl px-6 lg:px-12">
+      <div class="mt-3 rounded-2xl border border-white/10 bg-black/20 backdrop-blur-xl">
+        <div class="flex items-center justify-between px-4 py-3 lg:px-6">
+          <div class="flex items-center gap-2">
+            <div class="h-8 w-8 rounded-full border border-white/10 bg-white/5 shadow-softGlow"></div>
+            <div class="leading-tight">
+              <div class="text-sm text-white/90 font-medium">李一凡</div>
+              <div class="text-xs text-white/55">个人简历</div>
+            </div>
+          </div>
+
+          <nav class="hidden sm:flex items-center gap-5 text-xs text-white/65">
+            <a href="#education" class="hover:text-white/90 transition duration-500 ease-out">教育背景</a>
+            <a href="#internship" class="hover:text-white/90 transition duration-500 ease-out">实习经历</a>
+            <a href="#campus" class="hover:text-white/90 transition duration-500 ease-out">校园经历</a>
+            <a href="#videos" class="hover:text-white/90 transition duration-500 ease-out">视频作品</a>
+            <a href="#skills" class="hover:text-white/90 transition duration-500 ease-out">个人技能</a>
+          </nav>
+
+          <a href="#internship"
+             class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/80
+                    hover:bg-white/10 hover:border-white/20 hover:shadow-softGlow transition duration-500 ease-out">
+            <span>查看经历</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="opacity-90">
+              <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 第一部分：Hero 首屏（全屏高度） -->
+    <section class="relative min-h-[100svh] flex items-center">
+      <div class="mx-auto max-w-6xl px-6 lg:px-12 w-full">
+        <div class="grid items-center gap-10 lg:grid-cols-12">
+          <div class="lg:col-span-12">
+            <div class="flex flex-col items-center text-center">
+              <!-- 头像占位符（圆形 + 发光） -->
+              <div class="relative reveal glass-hover rounded-full p-2"
+                   data-parallax="0.02">
+                <div class="absolute inset-[-20%] rounded-full bg-white/10 blur-3xl"></div>
+                <div class="h-28 w-28 sm:h-32 sm:w-32 rounded-full
+                            border border-white/15 bg-white/5 backdrop-blur-xl
+                            shadow-softGlow flex items-center justify-center relative z-10 overflow-hidden">
+                  <img src="assets/avatar.jpg" alt="头像" class="h-full w-full object-cover" />
+                </div>
+              </div>
+
+              <div class="mt-7 reveal">
+                <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight">李一凡</h1>
+                <div class="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl px-4 py-2 text-xs sm:text-sm text-white/75">
+                  <span class="text-white/90">四川外国语大学研二在读</span>
+                  <span class="text-white/40">|</span>
+                  <span class="text-white/85">2027届毕业生</span>
+                </div>
+
+                <p class="mt-5 max-w-2xl text-base sm:text-lg text-white/70 leading-relaxed mx-auto">
+                  深耕品牌营销与跨界联动，具备扎实的内容运营、品牌策划与数据分析能力。
+                </p>
+              </div>
+
+              <!-- 联系方式（极简 Icon 悬浮展示） -->
+              <div class="mt-7 reveal">
+                <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+                  <a href="tel:15523020587"
+                     class="glass-hover group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl
+                            px-5 py-3 sm:px-6 sm:py-4 w-full sm:w-auto
+                            hover:bg-white/10 hover:border-white/20 transition duration-500 ease-out">
+                    <div class="flex items-center gap-3 justify-center">
+                      <i class="fa-solid fa-phone text-white/75 text-sm"></i>
+                      <div class="text-sm sm:text-base text-white/85">
+                        电话 <span class="text-white/95 font-medium">155-2302-0587</span>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="mailto:724108384@qq.com"
+                     class="glass-hover group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl
+                            px-5 py-3 sm:px-6 sm:py-4 w-full sm:w-auto
+                            hover:bg-white/10 hover:border-white/20 transition duration-500 ease-out">
+                    <div class="flex items-center gap-3 justify-center">
+                      <i class="fa-solid fa-envelope text-white/75 text-sm"></i>
+                      <div class="text-sm sm:text-base text-white/85">
+                        邮箱 <span class="text-white/95 font-medium">724108384@qq.com</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- 底部呼吸闪烁向下箭头 -->
+              <div class="mt-10 sm:mt-12 flex flex-col items-center reveal">
+                <a href="#education"
+                   class="pulse-arrow inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-xl
+                          h-12 w-12 hover:bg-white/10 hover:border-white/20 transition duration-500 ease-out"
+                   aria-label="向下滚动">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-white/85">
+                    <path d="M12 5v14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M19 12l-7 7-7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+                <div class="mt-3 text-xs text-white/45 tracking-wide">SCROLL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第二部分：教育背景（极简时间轴结合滚动渐显） -->
+    <section id="education" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-6 lg:px-12">
+        <div class="flex items-end justify-between gap-6">
+          <div class="max-w-2xl reveal">
+            <div class="text-xs tracking-[0.2em] text-white/45">EDUCATION</div>
+            <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight">教育背景</h2>
+          </div>
+        </div>
+
+        <div class="relative mt-12">
+          <div class="absolute left-3 sm:left-5 top-0 bottom-0 w-px bg-white/10"></div>
+
+          <div class="space-y-10 sm:space-y-12">
+            <article class="relative reveal">
+              <div class="flex gap-6">
+                <div class="relative flex-shrink-0">
+                  <div class="mt-2 h-10 w-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-softGlow"></div>
+                </div>
+                <div class="glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-innerGlow p-5 sm:p-7 w-full">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                    <div class="text-white/90 font-medium">
+                      2024.09 至今 | 四川外国语大学 | 新闻传播学 | 硕士研究生
+                    </div>
+                  </div>
+
+                  <div class="mt-4">
+                    <div class="text-sm text-white/65">主修课程：</div>
+                    <div class="mt-2 text-sm text-white/85 leading-relaxed">
+                      新闻传播理论、新闻传播实务、新闻传播史、新闻传播学研究方法、新媒体研究。
+                    </div>
+                  </div>
+
+                  <div class="mt-5">
+                    <div class="text-sm text-white/65">所获荣誉：</div>
+                    <div class="mt-2 text-sm text-white/85 leading-relaxed">
+                      2024-2025年学业三等奖学金、2025-2026年学业二等奖学金、2025年四川外国语大学团课大赛三等奖、第七届重庆西部国际投资贸易洽谈会优秀志愿者。
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="relative reveal">
+              <div class="flex gap-6">
+                <div class="relative flex-shrink-0">
+                  <div class="mt-2 h-10 w-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-softGlow"></div>
+                </div>
+                <div class="glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-innerGlow p-5 sm:p-7 w-full">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                    <div class="text-white/90 font-medium">
+                      2019.09-2023.06 | 西安外国语大学 | 英语 | 本科
+                    </div>
+                  </div>
+
+                  <div class="mt-4">
+                    <div class="text-sm text-white/65">主修课程：</div>
+                    <div class="mt-2 text-sm text-white/85 leading-relaxed">
+                      高级英语阅读、高级英语写作、高级英语翻译、应用心理学、英语教学法。
+                    </div>
+                  </div>
+
+                  <div class="mt-5">
+                    <div class="text-sm text-white/65">所获荣誉：</div>
+                    <div class="mt-2 text-sm text-white/85 leading-relaxed">
+                      获2020-2021年、2021-2022年个人二等奖学金、2021年全国大学生英语竞赛二等奖、2020年大学生创新创业项目校级立项、西安外国语大学多语种翻译大赛三等奖、第十四届全国运动会开幕式演员及优秀志愿者。
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第三部分：实习经历（重点突出区域，大尺寸液态玻璃卡片网格布局） -->
+    <section id="internship" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-6 lg:px-12">
+        <div class="reveal">
+          <div class="text-xs tracking-[0.2em] text-white/45">INTERNSHIP</div>
+          <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight">实习经历</h2>
+        </div>
+
+        <div class="mt-12 grid gap-5 lg:gap-6 grid-cols-1">
+          <!-- 实习 1：名创优品 -->
+          <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl
+                           p-6 sm:p-7 shadow-innerGlow
+                           hover:-translate-y-1 hover:scale-[1.05] transition duration-500 ease-out">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
+              <div>
+                <div class="text-sm text-white/65">2026.03至今</div>
+                <h3 class="mt-1 text-lg font-semibold text-white/90">名创优品(广州)有限责任公司 | 品牌营销实习生</h3>
+              </div>
+              <div class="text-xs text-white/45">Portfolio</div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div class="lg:col-span-1 space-y-6">
+                <h4 class="text-lg font-bold text-white">核心职责</h4>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  整合营销与跨界联动：深度参与年度重点IP微笑日、多邻国联名、Katy Perry MV联动及麦当劳联名等核心项目全周期策划，制定活动方案与社交媒体冲榜策略。
+                </p>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  社媒运营与内容产出：基于竞品分析撰写线上官宣文案及线下门店引流广告；运营小红书官方账号，策划小肥回家热点事件，单篇内容获15万+阅读及1.66万+互动。
+                </p>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  周边创意开发：参与麦当劳联名周边前期提案与创意设计，协同外部创意公司跟进物料制作。
+                </p>
+              </div>
+
+              <div class="lg:col-span-2">
+                <h4 class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-6">实习成果展示 / Portfolio</h4>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div class="result-card result-card--disabled glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">微笑日全周期策划案（节选）</div>
+                      <div class="mt-0.5 text-xs text-white/45">Campaign</div>
+                    </div>
+                  </div>
+
+                  <div class="result-card result-card--disabled glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-hands-holding-circle"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">联名官宣文案与引流物料（节选）</div>
+                      <div class="mt-0.5 text-xs text-white/45">Content</div>
+                    </div>
+                  </div>
+
+                  <div class="result-card result-card--disabled glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">小红书爆款选题与排版稿（节选）</div>
+                      <div class="mt-0.5 text-xs text-white/45">Red Notes</div>
+                    </div>
+                  </div>
+
+                  <div class="result-card result-card--disabled glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-box-open"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">联名周边提案图（节选）</div>
+                      <div class="mt-0.5 text-xs text-white/45">Merch</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-8">
+                  <h5 class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-4">新媒体运营图片 / Media Ops</h5>
+                  <div class="columns-1 sm:columns-2 lg:columns-3 gap-3">
+                    <a href="assets/名创优品新媒体运营经历1.jpeg" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历1.jpeg" alt="名创优品新媒体运营经历1" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品新媒体运营经历2.jpeg" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历2.jpeg" alt="名创优品新媒体运营经历2" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品新媒体运营经历3.jpeg" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历3.jpeg" alt="名创优品新媒体运营经历3" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品新媒体运营经历4.jpeg" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历4.jpeg" alt="名创优品新媒体运营经历4" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品新媒体运营经历5.png" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历5.png" alt="名创优品新媒体运营经历5" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品新媒体运营经历6.png" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历6.png" alt="名创优品新媒体运营经历6" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品新媒体运营经历7.png" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历7.png" alt="名创优品新媒体运营经历7" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品新媒体运营经历8.png" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历8.png" alt="名创优品新媒体运营经历8" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品新媒体运营经历9.png" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历9.png" alt="名创优品新媒体运营经历9" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品新媒体运营经历10.png" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品新媒体运营经历10.png" alt="名创优品新媒体运营经历10" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                  </div>
+                </div>
+
+                <div class="mt-8">
+                  <h5 class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-4">案例解读图片 / Case Study</h5>
+                  <div class="columns-1 md:columns-2 lg:columns-3 gap-3">
+                    <a href="assets/名创优品案例解读1.png" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品案例解读1.png" alt="名创优品案例解读1" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品案例解读2.png" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品案例解读2.png" alt="名创优品案例解读2" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                    <a href="assets/名创优品案例解读3.png" target="_blank" rel="noopener noreferrer" class="block mb-3 break-inside-avoid glass-hover rounded-2xl overflow-hidden border border-white/10 bg-black/30 p-1">
+                      <img src="assets/名创优品案例解读3.png" alt="名创优品案例解读3" class="w-full h-auto object-contain rounded-xl" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 实习 2：重庆智飞生物 -->
+          <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl
+                           p-6 sm:p-7 shadow-innerGlow
+                           hover:-translate-y-1 hover:scale-[1.05] transition duration-500 ease-out">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
+              <div>
+                <div class="text-sm text-white/65">2025.07-2025.11</div>
+                <h3 class="mt-1 text-lg font-semibold text-white/90">重庆智飞生物制品股份有限公司 | 市场部实习生</h3>
+              </div>
+              <div class="text-xs text-white/45">Portfolio</div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div class="lg:col-span-1 space-y-6">
+                <h4 class="text-lg font-bold text-white">核心职责</h4>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  运营智飞智讯公众号，策划发布10余篇宣传推文，最高阅读量达1.3万+。
+                </p>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  独立负责知苗平台网站运维，触达公众覆盖人群3亿+。
+                </p>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  协同法务风控，完成2000余份疾控合作协议修订审批。
+                </p>
+              </div>
+
+              <div class="lg:col-span-2">
+                <h4 class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-6">运营成果展示 / Portfolio</h4>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <a href="智飞生物26价肺炎球菌结合疫苗在澳大利亚启动Ⅰ期临床试验" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-vial"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">26价肺炎疫苗澳洲临床试验</div>
+                      <div class="mt-0.5 text-xs text-white/45">News</div>
+                    </div>
+                  </a>
+
+                  <a href="智飞生物四价流感病毒裂解疫苗获批签发证明" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-check-double"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">四价流感疫苗获批签发证明</div>
+                      <div class="mt-0.5 text-xs text-white/45">Approval</div>
+                    </div>
+                  </a>
+
+                  <a href="智飞生物四价流感疫苗全国首针接种完成 自主研发迎来收获期" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-syringe"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">四价流感疫苗全国首针接种</div>
+                      <div class="mt-0.5 text-xs text-white/45">Milestone</div>
+                    </div>
+                  </a>
+
+                  <a href="一图读懂|智飞生物2025年半年度报告" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">2025年半年度报告一图读懂</div>
+                      <div class="mt-0.5 text-xs text-white/45">Infographic</div>
+                    </div>
+                  </a>
+
+                  <a href="智飞生物控股子公司宸安生物CA111注射液获批临床" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-microscope"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">宸安生物CA111注射液获批临床</div>
+                      <div class="mt-0.5 text-xs text-white/45">Clinical</div>
+                    </div>
+                  </a>
+
+                  <a href="智飞生物荣登2025重庆民营企业100强榜单！" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-trophy"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">荣登2025重庆民企100强</div>
+                      <div class="mt-0.5 text-xs text-white/45">Honor</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- 实习 3：胖达信息杭州技术公司 -->
+          <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl
+                           p-6 sm:p-7 shadow-innerGlow
+                           hover:-translate-y-1 hover:scale-[1.05] transition duration-500 ease-out">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
+              <div>
+                <div class="text-sm text-white/65">2023.03-2023.05</div>
+                <h3 class="mt-1 text-lg font-semibold text-white/90">胖达信息杭州技术公司 | 品牌营销实习生</h3>
+              </div>
+              <div class="text-xs text-white/45">Portfolio</div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div class="lg:col-span-1 space-y-6">
+                <h4 class="text-lg font-bold text-white">核心职责</h4>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  策划不蓝store快闪店与代言人官宣，小红书推文总浏览量10万+。
+                </p>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  独立搭建KOL池，对接20余名国际博主，带动内容总阅读量25万+。
+                </p>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  负责FB/IG账号运营，发布30余篇推文，阅读量超20万。
+                </p>
+              </div>
+
+              <div class="lg:col-span-2">
+                <h4 class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-6">小红书成果展示 (3.5W+ 赞藏) / Red Notes</h4>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <a href="https://xhslink.com/m/3kdHM1857up" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-brands fa-red-river"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">熊猫外卖主页</div>
+                      <div class="mt-0.5 text-xs text-white/45">Red Notes</div>
+                    </div>
+                  </a>
+
+                  <a href="http://xhslink.com/o/46lNHqdClSe" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-comment"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">CEO的心里话</div>
+                      <div class="mt-0.5 text-xs text-white/45">Post</div>
+                    </div>
+                  </a>
+
+                  <a href="http://xhslink.com/o/2gs0yo4aTSX" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-music"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">嘿Siri播放年少有为</div>
+                      <div class="mt-0.5 text-xs text-white/45">Post</div>
+                    </div>
+                  </a>
+
+                  <a href="http://xhslink.com/o/7Zqaa53w94Y" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-basketball"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">周琦全球代言人</div>
+                      <div class="mt-0.5 text-xs text-white/45">Campaign</div>
+                    </div>
+                  </a>
+
+                  <a href="http://xhslink.com/o/5VOrOU3IOoU" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-store"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">不蓝Store快闪店</div>
+                      <div class="mt-0.5 text-xs text-white/45">Event</div>
+                    </div>
+                  </a>
+
+                  <a href="http://xhslink.com/o/6OYNE1Yqpkb" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-solid fa-heart"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">520宠粉福利</div>
+                      <div class="mt-0.5 text-xs text-white/45">Promotion</div>
+                    </div>
+                  </a>
+
+                  <a href="https://www.instagram.com/hungrypanda_official/" target="_blank" rel="noopener noreferrer" class="result-card glass-hover text-sm text-white/80">
+                    <i class="fa-brands fa-instagram"></i>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate font-medium">Instagram账号：hungrypanda_official</div>
+                      <div class="mt-0.5 text-xs text-white/45">IG</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- 实习 4：博朗翻译服务广州有限公司 -->
+          <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl
+                           p-6 sm:p-7 shadow-innerGlow
+                           hover:-translate-y-1 hover:scale-[1.05] transition duration-500 ease-out">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
+              <div>
+                <div class="text-sm text-white/65">2022.04-2022.06</div>
+                <h3 class="mt-1 text-lg font-semibold text-white/90">博朗翻译服务(广州)有限公司 | 翻译校对实习生</h3>
+              </div>
+              <div class="text-xs text-white/45">DETAIL</div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div class="lg:col-span-3 space-y-6">
+                <h4 class="text-lg font-bold text-white">核心职责</h4>
+
+                <p class="text-sm text-white/60 leading-relaxed">
+                  翻译校对与项目管理：接触证件、财经、医学等文体翻译，使用术语库等工具辅助校对；材料校对准确率达90%，独立完成500万字材料校对与项目管理。
+                </p>
+              </div>
+
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 第四部分：校园经历（紧凑型玻璃质感列表） -->
+    <section id="campus" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-6 lg:px-12">
+        <div class="reveal">
+          <div class="text-xs tracking-[0.2em] text-white/45">CAMPUS</div>
+          <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight">校园经历</h2>
+        </div>
+
+        <div class="mt-12 grid gap-4 lg:gap-6">
+          <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 sm:p-7 shadow-innerGlow
+                            hover:-translate-y-1 transition duration-500 ease-out">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
+              <h3 class="text-lg font-semibold text-white/90">
+                2024.09-2025.06 | 四川外国语大学新闻传播学院 | 舆情中心/学院办公室助理与编辑
+              </h3>
+              <div class="text-xs text-white/45">DETAIL</div>
+            </div>
+            <div class="mt-4 space-y-3 text-sm text-white/75 leading-relaxed">
+              <div>在学院官网独立发布20余篇新闻稿，参与舆情采编闭环，撰写国内外热点新闻稿30余篇；负责OA系统流程处理，年均审批转交100余份文件，审批效率提升40%。</div>
+            </div>
+
+            <div class="mt-6">
+              <h5 class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-6">官网新闻稿精选 / News Archive</h5>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <a href="https://media.sisu.edu.cn/xyxw/9ca800a780914be1a268e69bcde15eac.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">新闻传播学院三人行学工讲堂开讲啦</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/be60fbd8c2754eb2b234b0c920ba69de.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">我院副院长丁钟参加数智艺术人才培养研讨会</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/c50f49915d274c1296bc214877ecbe64.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">川外与麦芽传媒举行微短剧出海多语种译制基地合作签约</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/974352c6c5ca48f5857052642802e59d.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">学代会研代会选出新一届主席团</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/f5a43c418edc4302929ae44ec87c618a.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">2022级播主专业汇演举行</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/5e316c2b7bab42be9c8a7139777b471d.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">限定的记忆健身角活动举行</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/b6265aff4ee24a81b54bbca71cb0a997.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">国际传播微综艺发布会举行</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/b7c6847927a14baa9a6e9ec1321dfb2e.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">馨小青为视障人士口述哪吒</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/3cf9d742ce1d432ca652cd2f35e5c552.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">我院在学生短视频大赛中获佳绩</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/62d68d1f5e1344c887d57b984d6dd382.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">新闻传播学院举行建院20周年校友座谈会</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/dda0b2a699694e4ea44373cea57edaba.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">火锅英雄传奇获学习强国等关注报道</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/d4a8eb32fd204e26aa58a8517bd1a40e.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">第五届媒介社会学暑期班在川外举办</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/3219eb61a1eb469ab8f968ed013622e5.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">学界业界研讨文化破圈与Z世代连接新实践</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/6bb26fa1aa144c91b661f095367543c5.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">我院在大广赛取得新突破25件作品获全国奖</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/196db8c8f1b745f5832722550c2be3f2.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">第十一届重庆青年电影展圆满落幕</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/fea9a436c9d24efcb1f13350ae27e4ce.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">四川外国语大学学生处来我院开展学生工作调研</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/20e8495ffd81427abbd98a134dc59591.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">校长班主任严功军副校长与国传60余名同学谈心</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/b846cf764212425e940d2eb93895efe4.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">江小白副总裁张阳指导广告学专业学子短视频创作与运营</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/419b9f03eddb4f2db69a2fd5f3c99de7.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">第十一届重庆青年电影展开幕</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/47a1353374664fdabd88d7b0e6c1f8d0.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">“视听传播研究：智媒生态与国际视野”学术论坛暨2024年中国新闻史学会视听传播专委会学术年会在川外举行  </div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+
+                <a href="https://media.sisu.edu.cn/xyxw/fc9d71dcd28446aebec299d09eb67bd4.htm" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">教学质量月：我院举行教师教学科研能力提升专项活动</div>
+                    <div class="mt-0.5 text-xs text-white/45">官网新闻稿</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 sm:p-7 shadow-innerGlow
+                            hover:-translate-y-1 transition duration-500 ease-out">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
+              <h3 class="text-lg font-semibold text-white/90">
+                2019.09-2020.09 | 西安外国语大学校报记者团 | 公共事务部干事
+              </h3>
+              <div class="text-xs text-white/45">PORTFOLIO</div>
+            </div>
+
+            <div class="mt-4 space-y-3 text-sm text-white/75 leading-relaxed">
+              <div>
+                运营校报公众号“一周要闻”栏目，从选题策划到排版推送独立完成；输出高传播内容10+，累计总阅读量5万+。
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h5 class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-6">官网新闻稿精选 / News Archive</h5>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <a href="https://mp.weixin.qq.com/s/vx57C6cRdDPazMsKqby7Ww" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">七战七捷！TA们都是“夜空中最亮的星”</div>
+                    <div class="mt-0.5 text-xs text-white/45">一周要闻</div>
+                    <div class="mt-3 rounded-xl overflow-hidden border border-white/10 bg-black/20 p-1">
+                      <img src="assets/校报记者团2.png" alt="校报记者团作品2" class="w-full h-auto object-contain rounded-lg" />
+                    </div>
+                  </div>
+                </a>
+
+                <a href="https://mp.weixin.qq.com/s/hb7rYpkOCesDA9-xLBtxPg" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">盛花期将至！今年武大的樱花可以这么看</div>
+                    <div class="mt-0.5 text-xs text-white/45">一周要闻</div>
+                    <div class="mt-3 rounded-xl overflow-hidden border border-white/10 bg-black/20 p-1">
+                      <img src="assets/校报记者团1.png" alt="校报记者团作品1" class="w-full h-auto object-contain rounded-lg" />
+                    </div>
+                  </div>
+                </a>
+
+                <a href="https://mp.weixin.qq.com/s/RRIXDjlAqlx-K6CrmghPAg" target="_blank" rel="noopener noreferrer"
+                   class="result-card glass-hover text-sm text-white/80">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="truncate font-medium">成了！中国测量队登顶珠峰！</div>
+                    <div class="mt-0.5 text-xs text-white/45">一周要闻</div>
+                    <div class="mt-3 rounded-xl overflow-hidden border border-white/10 bg-black/20 p-1">
+                      <img src="assets/校报记者团3.png" alt="校报记者团作品3" class="w-full h-auto object-contain rounded-lg" />
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第五部分：视频剪辑作品 -->
+    <section id="videos" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-6 lg:px-12">
+        <div class="reveal">
+          <div class="text-xs tracking-[0.2em] text-white/45">VIDEO WORKS</div>
+          <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight">视频剪辑作品</h2>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+          <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 sm:p-5 shadow-innerGlow">
+            <div class="text-sm font-semibold text-white/90">视频作品 01</div>
+            <div class="mt-3 rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+              <video controls preload="auto" playsinline poster="assets/video1-cover.jpg" class="w-full aspect-[9/16] object-cover">
+                <source src="assets/video1.mp4#t=0.1" type="video/mp4" />
+                你的浏览器不支持 video 标签。
+              </video>
+            </div>
+          </article>
+
+          <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 sm:p-5 shadow-innerGlow">
+            <div class="text-sm font-semibold text-white/90">视频作品 02</div>
+            <div class="mt-3 rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+              <video controls preload="auto" playsinline poster="assets/video2-cover.jpg" class="w-full aspect-[9/16] object-cover">
+                <source src="assets/video2.mp4#t=0.1" type="video/mp4" />
+                你的浏览器不支持 video 标签。
+              </video>
+            </div>
+          </article>
+
+          <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 sm:p-5 shadow-innerGlow">
+            <div class="text-sm font-semibold text-white/90">视频作品 03</div>
+            <div class="mt-3 rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+              <video controls preload="auto" playsinline poster="assets/video3-cover.jpg" class="w-full aspect-[9/16] object-cover">
+                <source src="assets/video3.mp4#t=0.1" type="video/mp4" />
+                你的浏览器不支持 video 标签。
+              </video>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第六部分：个人技能（流式布局的微光悬浮标签） -->
+    <section id="skills" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-6 lg:px-12">
+        <div class="reveal">
+          <div class="text-xs tracking-[0.2em] text-white/45">SKILLS</div>
+          <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight">个人技能</h2>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-2">
+          <div class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 sm:p-7 shadow-innerGlow">
+            <div class="text-sm font-semibold text-white/90">语言能力</div>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">英语TEM-8良好</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">普通话二级甲等</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">英文资料检索</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">商务邮件沟通</span>
+            </div>
+          </div>
+
+          <div class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 sm:p-7 shadow-innerGlow">
+            <div class="text-sm font-semibold text-white/90">办公与数据分析</div>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">计算机二级</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">熟练掌握Office</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">Excel/Sheets透视表与数据清洗</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">VLOOKUP与SUMIFS函数</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">基础SQL</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">飞书多维表格</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">PPT结构化汇报</span>
+            </div>
+          </div>
+
+          <div class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 sm:p-7 shadow-innerGlow">
+            <div class="text-sm font-semibold text-white/90">设计与新媒体工具</div>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">Figma</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">PS</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">Canva</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">剪映</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">秀米</span>
+            </div>
+          </div>
+
+          <div class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 sm:p-7 shadow-innerGlow">
+            <div class="text-sm font-semibold text-white/90">AI生产力工具</div>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">熟练使用Gemini</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">ChatGPT进行图文内容创作</span>
+              <span class="glass-hover rounded-full border border-white/10 bg-black/10 backdrop-blur-xl px-4 py-2 text-xs text-white/80 hover:text-white hover:border-white/25 hover:bg-white/10 hover:shadow-softGlow transition duration-500 ease-out">效率提升</span>
+            </div>
+
+            <div class="mt-6 rounded-2xl border border-white/10 bg-black/10 backdrop-blur-xl p-4">
+              <div class="text-xs text-white/55 leading-relaxed">
+                以“策略 + 产出 + 数据闭环”的工作流推进内容效率与质量一致性。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 reveal">
+          <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 sm:p-7 shadow-innerGlow glass-hover">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <div class="text-sm font-semibold text-white/90">Ready for collaboration</div>
+                <div class="mt-2 text-sm text-white/65 leading-relaxed">
+                  如果您希望把品牌传播做得更有策略、更有数据、更有审美，我在这里。
+                </div>
+              </div>
+
+              <a href="mailto:724108384@qq.com?subject=%E6%9D%8E%E4%B8%80%E5%87%A1%E7%B0%A1%E5%8E%86%E8%81%94%E7%B3%BB"
+                 class="glass-hover inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl px-5 py-3 text-sm text-white/85
+                        hover:bg-white/10 hover:border-white/20 hover:shadow-softGlow transition duration-500 ease-out">
+                <span>发起联系</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="text-white/85">
+                  <path d="M22 2L11 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="py-10 sm:py-14">
+      <div class="mx-auto max-w-6xl px-6 lg:px-12">
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 sm:p-6 shadow-innerGlow glass-hover">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div class="text-xs text-white/45">© <span id="year"></span> Li Yifan</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      const $year = document.getElementById('year');
+      if ($year) $year.textContent = String(new Date().getFullYear());
+
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // 1) Intersection Observer：fade-in-up
+      const revealEls = Array.from(document.querySelectorAll('.reveal'));
+      if ('IntersectionObserver' in window && revealEls.length) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              obs.unobserve(e.target);
+            }
+          }
+        }, { threshold: 0.14, rootMargin: '0px 0px -10% 0px' });
+
+        revealEls.forEach(el => observer.observe(el));
+      } else {
+        revealEls.forEach(el => el.classList.add('is-visible'));
+      }
+
+      // 2) 视差滚动：轻微位移差
+      if (!prefersReduced) {
+        const parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
+        if (parallaxEls.length) {
+          const speedMap = new Map();
+          parallaxEls.forEach(el => speedMap.set(el, parseFloat(el.getAttribute('data-parallax') || '0')));
+
+          let rafId = null;
+          const tick = () => {
+            rafId = null;
+            const y = window.scrollY || 0;
+            for (const el of parallaxEls) {
+              const speed = speedMap.get(el) || 0;
+              const offset = y * speed;
+              el.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+            }
+          };
+
+          const onScroll = () => {
+            if (rafId) return;
+            rafId = window.requestAnimationFrame(tick);
+          };
+
+          window.addEventListener('scroll', onScroll, { passive: true });
+          tick();
+        }
+      }
+
+      // 3) Hover 细节增强：边框层级（轻量补足，避免破坏整体统一 CSS）
+      if (!prefersReduced) {
+        const glassCards = Array.from(document.querySelectorAll('.glass-hover'));
+        if (glassCards.length) {
+          glassCards.forEach(card => {
+            card.addEventListener('pointerenter', () => {
+              card.style.borderColor = 'rgba(255,255,255,0.22)';
+            });
+            card.addEventListener('pointerleave', () => {
+              card.style.borderColor = 'rgba(255,255,255,0.10)';
+            });
+          });
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
+```
