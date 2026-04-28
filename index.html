@@ -413,9 +413,9 @@
         </div>
 
         <div class="mt-12 grid gap-5 lg:gap-6 grid-cols-1">
-         <!-- 实习 1：名创优品 (突破边界灵动版) -->
+         <!-- 实习 1：名创优品 (液态流动版) -->
           <article class="reveal glass-hover rounded-[2.5rem] border border-white/10 bg-white/[0.03] backdrop-blur-2xl
-                           p-8 sm:p-12 shadow-innerGlow transition-all duration-700 ease-out mb-16">
+                           p-8 sm:p-12 shadow-innerGlow transition-all duration-1000 ease-out mb-16 overflow-visible">
             
             <!-- 1. 顶部标题区 -->
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-white/5 pb-10">
@@ -423,91 +423,124 @@
                 <div class="text-[10px] font-bold text-accent tracking-[0.3em] uppercase">2026.03 - Present</div>
                 <h3 class="mt-2 text-3xl font-semibold text-white tracking-tight">名创优品 (广州) | 品牌营销实习生</h3>
               </div>
-              <div class="hidden lg:block text-[10px] text-white/20 tracking-widest uppercase italic">Infinite Canvas Exhibit</div>
-            </div>
-
-            <!-- 2. 核心职责：置顶横向布局 -->
-            <div class="mt-12">
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="space-y-3">
-                  <h4 class="text-[11px] font-bold text-accent uppercase tracking-widest">01 / Content</h4>
-                  <p class="text-sm font-medium text-white/90">内容运营与爆款打造</p>
-                  <p class="text-[13px] text-white/50 leading-relaxed font-light">负责小红书官方账号运维，策划“小肥回家”等热点，单篇内容获 <span class="text-white font-medium">15万+</span> 阅读及 <span class="text-white font-medium">1.66万+</span> 互动。</p>
-                </div>
-                <div class="space-y-3 border-l border-white/5 pl-0 md:pl-10">
-                  <h4 class="text-[11px] font-bold text-accent uppercase tracking-widest">02 / Design</h4>
-                  <p class="text-sm font-medium text-white/90">周边设计与物料产出</p>
-                  <p class="text-[13px] text-white/50 leading-relaxed font-light">参与麦当劳等联名IP周边前期提案与创意设计，协同供应商完成从创意构思到实物打样的落地转化。</p>
-                </div>
-                <div class="space-y-3 border-l border-white/5 pl-0 md:pl-10">
-                  <h4 class="text-[11px] font-bold text-accent uppercase tracking-widest">03 / Strategy</h4>
-                  <p class="text-sm font-medium text-white/90">整合营销全周期策划</p>
-                  <p class="text-[13px] text-white/50 leading-relaxed font-light">深度参与微笑日、多邻国等联名项目全周期整合策划，制定跨平台内容分发与社交媒体冲榜策略。</p>
+              <div class="hidden lg:block">
+                <div class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span>
+                  <span class="text-[10px] text-white/20 tracking-widest uppercase italic">Liquid Portfolio Exhibit</span>
                 </div>
               </div>
             </div>
-
-            <!-- 3. 下方：三行独立滑动窗格 (突破边界的 Mac Dock 效果) -->
-            <!-- 特别注意：这里使用了 py-12 来确保图片放大上浮时不被裁切 -->
-            <div class="mt-10 space-y-4">
+          
+            <!-- 2. 核心职责：置顶横向布局 -->
+            <div class="mt-12">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="group cursor-default">
+                  <h4 class="text-[11px] font-bold text-accent uppercase tracking-widest transition-all group-hover:tracking-[0.4em]">01 / Content</h4>
+                  <p class="mt-3 text-sm font-medium text-white/90">内容运营与爆款打造</p>
+                  <p class="mt-2 text-[13px] text-white/50 leading-relaxed font-light transition-colors group-hover:text-white/70">负责小红书官方账号运维，策划“小肥回家”等热点，单篇内容获 <span class="text-white font-medium">15万+</span> 阅读及 <span class="text-white font-medium">1.66万+</span> 互动。</p>
+                </div>
+                <div class="group cursor-default border-l border-white/5 pl-0 md:pl-10">
+                  <h4 class="text-[11px] font-bold text-accent uppercase tracking-widest transition-all group-hover:tracking-[0.4em]">02 / Design</h4>
+                  <p class="mt-3 text-sm font-medium text-white/90">周边设计与物料产出</p>
+                  <p class="mt-2 text-[13px] text-white/50 leading-relaxed font-light transition-colors group-hover:text-white/70">参与麦当劳等联名IP周边前期提案与创意设计，协同供应商完成从创意构思到实物打样的落地转化。</p>
+                </div>
+                <div class="group cursor-default border-l border-white/5 pl-0 md:pl-10">
+                  <h4 class="text-[11px] font-bold text-accent uppercase tracking-widest transition-all group-hover:tracking-[0.4em]">03 / Strategy</h4>
+                  <p class="mt-3 text-sm font-medium text-white/90">整合营销全周期策划</p>
+                  <p class="mt-2 text-[13px] text-white/50 leading-relaxed font-light transition-colors group-hover:text-white/70">深度参与微笑日、多邻国等联名项目全周期整合策划，制定跨平台内容分发与社交媒体冲榜策略。</p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- 3. 下方：三行独立滑动窗格 (Mac Dock 增强流动效果) -->
+            <div class="mt-6 space-y-2 overflow-visible" style="perspective: 1200px;">
               
               <!-- 第一行：新媒体运营 -->
-              <div class="relative">
-                <h5 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em] mb-2 px-1">Part 01 / 新媒体运营部分作品</h5>
-                <!-- py-12 预留了足够的上下空间 -->
-                <div class="flex gap-8 overflow-x-auto no-scrollbar scroll-smooth snap-x py-12 px-4 overflow-y-visible">
-                  <!-- 卡片增加 z-index 管理，hover 时 z-50 确保浮在最上层 -->
-                  <a href="assets/名创优品新媒体运营经历1.jpeg" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+              <div class="relative overflow-visible">
+                <div class="flex items-center gap-4 mb-2 px-1">
+                  <h5 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em] whitespace-nowrap">Part 01 / 新媒体运营作品</h5>
+                  <div class="h-px w-full bg-white/5"></div>
+                </div>
+                <!-- py-20 确保放大上浮空间，overflow-visible 确保清透不被截断 -->
+                <div class="flex gap-10 overflow-x-auto no-scrollbar scroll-smooth snap-x py-20 px-6 overflow-y-visible">
+                  <!-- 重点：transition 曲线改为 Apple Expo，hover 增加 rotate 和 translate -->
+                  <a href="assets/名创优品新媒体运营经历1.jpeg" target="_blank" 
+                     class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] 
+                            transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) 
+                            hover:scale-115 hover:-translate-y-12 hover:rotate-1 hover:border-white/40 
+                            hover:shadow-[0_40px_80px_rgba(0,0,0,0.5),0_0_20px_rgba(255,255,255,0.1)] 
+                            relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历1.jpeg" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品新媒体运营经历2.jpeg" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品新媒体运营经历2.jpeg" target="_blank" 
+                     class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] 
+                            transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) 
+                            hover:scale-115 hover:-translate-y-12 hover:-rotate-1 hover:border-white/40 
+                            hover:shadow-[0_40px_80px_rgba(0,0,0,0.5),0_0_20px_rgba(255,255,255,0.1)] 
+                            relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历2.jpeg" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品新媒体运营经历3.jpeg" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品新媒体运营经历3.jpeg" target="_blank" 
+                     class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] 
+                            transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) 
+                            hover:scale-115 hover:-translate-y-12 hover:rotate-1 hover:border-white/40 
+                            hover:shadow-[0_40px_80px_rgba(0,0,0,0.5),0_0_20px_rgba(255,255,255,0.1)] 
+                            relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历3.jpeg" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品新媒体运营经历4.jpeg" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品新媒体运营经历4.jpeg" target="_blank" 
+                     class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] 
+                            transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) 
+                            hover:scale-115 hover:-translate-y-12 hover:-rotate-1 hover:border-white/40 
+                            hover:shadow-[0_40px_80px_rgba(0,0,0,0.5),0_0_20px_rgba(255,255,255,0.1)] 
+                            relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历4.jpeg" class="h-full w-auto object-contain" />
                   </a>
                 </div>
               </div>
-
+          
               <!-- 第二行：创意设计 -->
-              <div class="relative">
-                <h5 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em] mb-2 px-1">Part 02 / 创意设计部分成果</h5>
-                <div class="flex gap-8 overflow-x-auto no-scrollbar scroll-smooth snap-x py-12 px-4 overflow-y-visible">
-                  <a href="assets/名创优品新媒体运营经历5.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+              <div class="relative overflow-visible">
+                <div class="flex items-center gap-4 mb-2 px-1">
+                  <h5 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em] whitespace-nowrap">Part 02 / 创意设计部分成果</h5>
+                  <div class="h-px w-full bg-white/5"></div>
+                </div>
+                <div class="flex gap-10 overflow-x-auto no-scrollbar scroll-smooth snap-x py-20 px-6 overflow-y-visible">
+                  <a href="assets/名创优品新媒体运营经历5.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-115 hover:-translate-y-12 hover:rotate-1 hover:border-white/40 hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历5.png" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品新媒体运营经历6.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品新媒体运营经历6.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-115 hover:-translate-y-12 hover:-rotate-1 hover:border-white/40 hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历6.png" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品新媒体运营经历7.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品新媒体运营经历7.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-115 hover:-translate-y-12 hover:rotate-1 hover:border-white/40 hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历7.png" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品新媒体运营经历8.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品新媒体运营经历8.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-115 hover:-translate-y-12 hover:-rotate-1 hover:border-white/40 hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历8.png" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品新媒体运营经历9.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品新媒体运营经历9.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-115 hover:-translate-y-12 hover:rotate-1 hover:border-white/40 hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历9.png" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品新媒体运营经历10.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品新媒体运营经历10.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-115 hover:-translate-y-12 hover:-rotate-1 hover:border-white/40 hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative z-10 hover:z-50">
                     <img src="assets/名创优品新媒体运营经历10.png" class="h-full w-auto object-contain" />
                   </a>
                 </div>
               </div>
-
+          
               <!-- 第三行：案例调研 -->
-              <div class="relative">
-                <h5 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em] mb-2 px-1">Gallery 03 / 案例调研&洞察</h5>
-                <div class="flex gap-8 overflow-x-auto no-scrollbar scroll-smooth snap-x py-12 px-4 overflow-y-visible">
-                  <a href="assets/名创优品案例解读1.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+              <div class="relative overflow-visible">
+                <div class="flex items-center gap-4 mb-2 px-1">
+                  <h5 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em] whitespace-nowrap">Part 03 / 案例调研&洞察</h5>
+                  <div class="h-px w-full bg-white/5"></div>
+                </div>
+                <div class="flex gap-10 overflow-x-auto no-scrollbar scroll-smooth snap-x py-20 px-6 overflow-y-visible">
+                  <a href="assets/名创优品案例解读1.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-115 hover:-translate-y-12 hover:rotate-1 hover:border-white/40 hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative z-10 hover:z-50">
                     <img src="assets/名创优品案例解读1.png" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品案例解读2.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品案例解读2.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-115 hover:-translate-y-12 hover:-rotate-1 hover:border-white/40 hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative z-10 hover:z-50">
                     <img src="assets/名创优品案例解读2.png" class="h-full w-auto object-contain" />
                   </a>
-                  <a href="assets/名创优品案例解读3.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) hover:scale-110 hover:-translate-y-8 hover:border-white/40 hover:shadow-softGlow relative z-10 hover:z-50">
+                  <a href="assets/名创优品案例解读3.png" target="_blank" class="flex-none h-64 snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-115 hover:-translate-y-12 hover:rotate-1 hover:border-white/40 hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative z-10 hover:z-50">
                     <img src="assets/名创优品案例解读3.png" class="h-full w-auto object-contain" />
                   </a>
                 </div>
