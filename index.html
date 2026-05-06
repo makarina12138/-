@@ -1007,19 +1007,18 @@
     </section>
 
         
-    <!-- 第五部分：视频剪辑作品 (首帧预览与封面定格混排版) -->
-    <section id="videos" class="py-20 sm:py-28">
-      <div class="mx-auto max-w-6xl px-6 lg:px-12">
-        <div class="reveal">
-          <div class="text-xs tracking-[0.2em] text-accent font-bold uppercase">Video Portfolio</div>
-          <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-white">视频剪辑作品</h2>
-        </div>
-    code
-    Code
-    <!-- 1. 车企宣传视频 (竖屏 9:16 - 3列 - 自动显示视频首帧) -->
+    <!-- 第五部分：视频剪辑作品 (全兼容与稳定性最终版) -->
+<section id="videos" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+    <div class="reveal">
+      <div class="text-xs tracking-[0.2em] text-accent font-bold uppercase">Video Portfolio</div>
+      <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-white">视频剪辑作品</h2>
+    </div>
+
+    <!-- 01 / 车企宣传视频 (竖屏 9:16 - 3列 - 自动抓取首帧) -->
     <div class="mt-16">
       <div class="flex items-center gap-4 mb-8 reveal">
-        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">01 / 车企宣传视频 (No Cover - First Frame)</h3>
+        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">01 / 车企宣传视频</h3>
         <div class="h-px flex-1 bg-white/10"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1027,7 +1026,6 @@
         <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 shadow-innerGlow group">
           <div class="text-[10px] font-bold text-white/40 uppercase mb-3">Promotion 01</div>
           <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30 aspect-[9/16] relative">
-            <!-- 不使用 poster，通过 #t=0.1 抓取首帧 -->
             <video controls preload="metadata" playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               <source src="assets/video1.mp4#t=0.1" type="video/mp4">
             </video>
@@ -1053,13 +1051,14 @@
         </article>
       </div>
     </div>
-    
-    <!-- 2. Vlog + 转场混剪 (横屏 16:9 - 2列大图 - 固定封面) -->
+
+    <!-- 02 / Vlog + 转场混剪 (横屏 16:9 - 2列大图展示 - 封面定格) -->
     <div class="mt-24">
       <div class="flex items-center gap-4 mb-8 reveal">
-        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">02 / Vlog + 转场混剪 (Landscape - Fixed Cover)</h3>
+        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">02 / Vlog + 转场混剪</h3>
         <div class="h-px flex-1 bg-white/10"></div>
       </div>
+      <!-- 使用 md:grid-cols-2 放大内容 -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Video 4 -->
         <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 shadow-innerGlow group">
@@ -1088,7 +1087,7 @@
             </video>
           </div>
         </article>
-        <!-- Video 7 -->
+        <!-- Video 7 - 重点检查此项封面 -->
         <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 shadow-innerGlow group">
           <div class="text-[10px] font-bold text-white/40 uppercase mb-3">Vlog Edit 04</div>
           <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30 aspect-video relative">
@@ -1099,11 +1098,11 @@
         </article>
       </div>
     </div>
-    
-    <!-- 3. 信息流剪辑 + 口播 (竖屏 9:16 - 3列 - 固定封面) -->
+
+    <!-- 03 / 信息流剪辑 + 口播 (竖屏 9:16 - 3列 - 封面定格) -->
     <div class="mt-24">
       <div class="flex items-center gap-4 mb-8 reveal">
-        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">03 / 信息流剪辑 + 口播 (Vertical - Fixed Cover)</h3>
+        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">03 / 信息流剪辑 + 口播</h3>
         <div class="h-px flex-1 bg-white/10"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1136,6 +1135,8 @@
         </article>
       </div>
     </div>
+  </div>
+</section>
     
     <!-- 第六部分：个人技能（流式布局的微光悬浮标签） -->
     <section id="skills" class="py-20 sm:py-28">
