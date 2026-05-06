@@ -1006,7 +1006,7 @@
       </div>
     </section>
 
-   <!-- 第五部分：视频剪辑作品 (封面增强与播放优化版) -->
+   <!-- 第五部分：视频剪辑作品 (首帧预览与封面定格混排版) -->
 <section id="videos" class="py-20 sm:py-28">
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
     <div class="reveal">
@@ -1014,10 +1014,10 @@
       <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-white">视频剪辑作品</h2>
     </div>
 
-    <!-- 1. 车企宣传视频 (竖屏 9:16 - 3列布局) -->
+    <!-- 1. 车企宣传视频 (竖屏 9:16 - 3列 - 自动显示视频首帧) -->
     <div class="mt-16">
       <div class="flex items-center gap-4 mb-8 reveal">
-        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">01 / 车企宣传视频 (Vertical)</h3>
+        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">01 / 车企宣传视频 (No Cover - First Frame)</h3>
         <div class="h-px flex-1 bg-white/10"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1025,10 +1025,9 @@
         <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 shadow-innerGlow group">
           <div class="text-[10px] font-bold text-white/40 uppercase mb-3">Promotion 01</div>
           <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30 aspect-[9/16] relative">
-            <!-- preload="none" 确保封面图定格，直到点击播放 -->
-            <video controls preload="none" playsinline poster="assets/video1-cover.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              <source src="assets/video1.mp4" type="video/mp4">
-              您的浏览器不支持视频播放。
+            <!-- 不使用 poster，通过 #t=0.1 抓取首帧 -->
+            <video controls preload="metadata" playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <source src="assets/video1.mp4#t=0.1" type="video/mp4">
             </video>
           </div>
         </article>
@@ -1036,8 +1035,8 @@
         <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 shadow-innerGlow group">
           <div class="text-[10px] font-bold text-white/40 uppercase mb-3">Promotion 02</div>
           <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30 aspect-[9/16] relative">
-            <video controls preload="none" playsinline poster="assets/video2-cover.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              <source src="assets/video2.mp4" type="video/mp4">
+            <video controls preload="metadata" playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <source src="assets/video2.mp4#t=0.1" type="video/mp4">
             </video>
           </div>
         </article>
@@ -1045,18 +1044,18 @@
         <article class="reveal glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 shadow-innerGlow group">
           <div class="text-[10px] font-bold text-white/40 uppercase mb-3">Promotion 03</div>
           <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30 aspect-[9/16] relative">
-            <video controls preload="none" playsinline poster="assets/video3-cover.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              <source src="assets/video3.mp4" type="video/mp4">
+            <video controls preload="metadata" playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <source src="assets/video3.mp4#t=0.1" type="video/mp4">
             </video>
           </div>
         </article>
       </div>
     </div>
 
-    <!-- 2. Vlog + 转场混剪 (横屏 16:9 - 2列大尺寸展示) -->
+    <!-- 2. Vlog + 转场混剪 (横屏 16:9 - 2列大图 - 固定封面) -->
     <div class="mt-24">
       <div class="flex items-center gap-4 mb-8 reveal">
-        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">02 / Vlog + 转场混剪 (Landscape)</h3>
+        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">02 / Vlog + 转场混剪 (Landscape - Fixed Cover)</h3>
         <div class="h-px flex-1 bg-white/10"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -1099,10 +1098,10 @@
       </div>
     </div>
 
-    <!-- 3. 信息流剪辑 + 口播 (竖屏 9:16 - 3列布局) -->
+    <!-- 3. 信息流剪辑 + 口播 (竖屏 9:16 - 3列 - 固定封面) -->
     <div class="mt-24">
       <div class="flex items-center gap-4 mb-8 reveal">
-        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">03 / 信息流剪辑 + 口播 (Vertical)</h3>
+        <h3 class="text-sm font-bold text-white/90 uppercase tracking-widest">03 / 信息流剪辑 + 口播 (Vertical - Fixed Cover)</h3>
         <div class="h-px flex-1 bg-white/10"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
