@@ -426,7 +426,7 @@
             </div>
             <div class="hidden lg:block text-[10px] text-white/20 tracking-widest uppercase italic">NIO Mobility & Lifestyle</div>
           </div>
-  
+        
           <!-- 2. 核心职责 -->
           <div class="mt-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -441,7 +441,7 @@
                 <h4 class="text-[11px] font-bold text-blue-400 uppercase tracking-widest">02 / Collaboration</h4>
                 <p class="text-sm font-medium text-white/90">达人合作与线下执行</p>
                 <p class="text-[13px] text-white/50 leading-relaxed font-light">
-                  搭建区域达人池，累计对接 <span class="text-white">50+</span> 达人完成车展、车主家宴等 <span class="text-white">8+</span> 场大型活动全流程执行。
+                  搭建区域达人池，累计对接 <span class="text-white">50+</span> 达人完成车展、车主家宴、女子夜跑等 <span class="text-white">8+</span> 场大型活动全流程执行。
                 </p>
               </div>
               <div class="space-y-3 border-l border-white/5 pl-0 md:pl-10">
@@ -453,9 +453,9 @@
               </div>
             </div>
           </div>
-  
+        
           <!-- 3. 下方：多维作品展示 -->
-          <div class="mt-10 space-y-8">
+          <div class="mt-10 space-y-12">
             
             <!-- 第一部分：自养号矩阵 -->
             <div class="relative">
@@ -495,36 +495,62 @@
                 </div>
               </div>
             </div>
-  
-            <!-- 第二部分：部分视频呈现 (横向滚动) -->
-            <div class="relative">
-              <h5 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em] mb-2 px-1">Part 02 / 部分视频作品预览</h5>
-              <div class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x py-10 px-4 overflow-y-visible">
-                <!-- 视频卡片 1 -->
-                <div class="flex-none w-48 snap-start rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[9/16] transition-all duration-500 hover:scale-110 hover:-translate-y-4 hover:z-50 shadow-softGlow relative group">
-                  <video preload="metadata" class="w-full h-full object-cover">
-                    <source src="assets/nio-video1.mp4#t=0.1" type="video/mp4">
-                  </video>
-                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                      <i class="fa-solid fa-play text-white text-2xl"></i>
+        
+            <!-- 第二部分：部分视频作品预览 (两小点) -->
+            <div class="space-y-10">
+              
+              <!-- 1. 官号视频预览 -->
+              <div class="relative">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                  <div class="w-1 h-1 rounded-full bg-blue-400"></div>
+                  <h5 class="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">01 / 官号视频作品 (含定制封面)</h5>
+                </div>
+                <div class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x py-8 px-4 overflow-y-visible">
+                  <!-- 官号视频 1 -->
+                  <div class="flex-none w-44 snap-start rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[9/16] transition-all duration-500 hover:scale-110 hover:-translate-y-4 hover:z-50 shadow-softGlow relative group">
+                    <video controls preload="none" poster="assets/汽车视频封面1.jpg" class="w-full h-full object-cover">
+                      <source src="assets/汽车视频1.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <!-- 官号视频 2 -->
+                  <div class="flex-none w-44 snap-start rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[9/16] transition-all duration-500 hover:scale-110 hover:-translate-y-4 hover:z-50 shadow-softGlow relative group">
+                    <video controls preload="none" poster="assets/汽车视频封面2.jpg" class="w-full h-full object-cover">
+                      <source src="assets/汽车视频2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <!-- 官号视频 3 -->
+                  <div class="flex-none w-44 snap-start rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[9/16] transition-all duration-500 hover:scale-110 hover:-translate-y-4 hover:z-50 shadow-softGlow relative group">
+                    <video controls preload="none" poster="assets/汽车视频封面3.jpg" class="w-full h-full object-cover">
+                      <source src="assets/汽车视频3.mp4" type="video/mp4">
+                    </video>
                   </div>
                 </div>
-                <!-- 视频卡片 2 -->
-                <div class="flex-none w-48 snap-start rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[9/16] transition-all duration-500 hover:scale-110 hover:-translate-y-4 hover:z-50 shadow-softGlow relative group">
-                  <video preload="metadata" class="w-full h-full object-cover">
-                    <source src="assets/nio-video2.mp4#t=0.1" type="video/mp4">
-                  </video>
-                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                      <i class="fa-solid fa-play text-white text-2xl"></i>
-                  </div>
+              </div>
+        
+              <!-- 2. 自养号视频预览 -->
+              <div class="relative">
+                <div class="flex items-center gap-2 mb-2 px-1">
+                  <div class="w-1 h-1 rounded-full bg-blue-400"></div>
+                  <h5 class="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">02 / 自养号视频预览 (40+ 产出精选)</h5>
                 </div>
-                <!-- 视频卡片 3 -->
-                <div class="flex-none w-48 snap-start rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[9/16] transition-all duration-500 hover:scale-110 hover:-translate-y-4 hover:z-50 shadow-softGlow relative group">
-                  <video preload="metadata" class="w-full h-full object-cover">
-                    <source src="assets/nio-video3.mp4#t=0.1" type="video/mp4">
-                  </video>
-                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                      <i class="fa-solid fa-play text-white text-2xl"></i>
+                <div class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x py-8 px-4 overflow-y-visible">
+                  <!-- 自养号视频 1 -->
+                  <div class="flex-none w-44 snap-start rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[9/16] transition-all duration-500 hover:scale-110 hover:-translate-y-4 hover:z-50 shadow-softGlow relative group">
+                    <video controls preload="metadata" class="w-full h-full object-cover">
+                      <source src="assets/自养号视频1.mp4#t=0.1" type="video/mp4">
+                    </video>
+                  </div>
+                  <!-- 自养号视频 2 -->
+                  <div class="flex-none w-44 snap-start rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[9/16] transition-all duration-500 hover:scale-110 hover:-translate-y-4 hover:z-50 shadow-softGlow relative group">
+                    <video controls preload="metadata" class="w-full h-full object-cover">
+                      <source src="assets/自养号视频2.mp4#t=0.1" type="video/mp4">
+                    </video>
+                  </div>
+                  <!-- 自养号视频 3 -->
+                  <div class="flex-none w-44 snap-start rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[9/16] transition-all duration-500 hover:scale-110 hover:-translate-y-4 hover:z-50 shadow-softGlow relative group">
+                    <video controls preload="metadata" class="w-full h-full object-cover">
+                      <source src="assets/自养号视频3.mp4#t=0.1" type="video/mp4">
+                    </video>
                   </div>
                 </div>
               </div>
