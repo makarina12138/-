@@ -60,21 +60,19 @@
       overflow: hidden;
       border-color: rgba(255,255,255,0.10);
       transition: border-color 520ms var(--ease), transform 520ms var(--ease), background-color 520ms var(--ease);
-    }
-    
-    /* 背景微光：保留，但非常克制 */
+ 
+      /* 背景微光 (鼠标追踪) */
     .glass-hover::before{
       content:"";
       position:absolute;
-      inset:-1px;
-      background: radial-gradient(400px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 80%);
+      inset:0;
+      background: radial-gradient(600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.08), transparent 80%);
       opacity: 0;
       transition: opacity 520ms var(--ease);
       pointer-events:none;
       z-index: 0;
     }
-    .glass-hover:hover::before{
-      opacity: 1;
+    .glass-hover:hover::before{ opacity: 1; }
     }
 
     /* Portfolio 作品卡 */
