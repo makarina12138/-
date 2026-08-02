@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>李一凡｜个人简历</title>
 
-  <!-- Font Awesome (for portfolio icons) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <script>
@@ -26,12 +26,7 @@
   <style>
     :root{
       --bg0:#05060a;
-      --bg1:#0b0d15;
       --fg:#ffffff;
-      --muted:rgba(255,255,255,.72);
-      --muted2:rgba(255,255,255,.55);
-      --stroke:rgba(255,255,255,.10);
-      --stroke2:rgba(255,255,255,.16);
       --ease: cubic-bezier(.22, 1, .36, 1);
     }
 
@@ -64,16 +59,15 @@
       position: relative;
       overflow: hidden;
       border-color: rgba(255,255,255,0.10);
-      transition: border-color 520ms var(--ease);
+      transition: border-color 520ms var(--ease), transform 520ms var(--ease), background-color 520ms var(--ease);
     }
+    
+    /* 背景微光：保留，但非常克制 */
     .glass-hover::before{
       content:"";
       position:absolute;
       inset:-1px;
-      background:
-        radial-gradient(700px 260px at 18% 0%, rgba(255,255,255,0.18), transparent 55%),
-        radial-gradient(460px 240px at 92% 10%, rgba(147,197,253,0.14), transparent 60%),
-        radial-gradient(420px 220px at 45% 120%, rgba(34,211,238,0.10), transparent 58%);
+      background: radial-gradient(400px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 80%);
       opacity: 0;
       transition: opacity 520ms var(--ease);
       pointer-events:none;
@@ -83,30 +77,7 @@
       opacity: 1;
     }
 
-    .glass-hover::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        linear-gradient(110deg, transparent 28%, rgba(255,255,255,.30) 50%, transparent 64%);
-      transform: translateX(-125%) skewX(-18deg);
-      opacity: 0;
-      filter: blur(0.4px);
-      transition:
-        opacity 380ms var(--ease),
-        transform 900ms var(--ease);
-      pointer-events:none;
-      mix-blend-mode: screen;
-      z-index: 0;
-    }
-    .glass-hover:hover::after{
-      opacity: .98;
-      transform: translateX(42%) skewX(-18deg);
-    }
-
-    /* =========================
-       统一加强：Portfolio 作品卡
-       ========================= */
+    /* Portfolio 作品卡 */
     .result-card{
       position: relative;
       display:flex;
@@ -117,90 +88,37 @@
       text-decoration:none;
       color: inherit;
       min-height: 46px;
-
       background-color: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.10);
-      transition:
-        transform 520ms var(--ease),
-        box-shadow 520ms var(--ease),
-        border-color 520ms var(--ease),
-        background-color 520ms var(--ease);
-      z-index: 1; /* 确保压过 glass-hover::before/::after */
-    }
-
-    .result-card i{
-      width: 18px;
-      text-align:center;
-      opacity: .94;
-      flex: 0 0 auto;
-      transition: opacity 380ms var(--ease), transform 520ms var(--ease);
-      transform: translateZ(0);
-    }
-
-    .result-card::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background:
-        radial-gradient(520px 120px at 15% 20%, rgba(255,255,255,0.26), transparent 55%),
-        radial-gradient(420px 140px at 85% 0%, rgba(147,197,253,0.20), transparent 62%);
-      opacity: 0;
-      transition: opacity 520ms var(--ease);
-      pointer-events:none;
-      z-index: 0;
-    }
-    .result-card:hover::before{
-      opacity: 1;
+      transition: transform 520ms var(--ease), box-shadow 520ms var(--ease), border-color 520ms var(--ease), background-color 520ms var(--ease);
+      z-index: 1;
     }
 
     .result-card:hover{
       transform: translateY(-1px);
       border-color: rgba(255,255,255,0.22);
       background-color: rgba(255,255,255,0.05);
-      box-shadow:
-        0 30px 90px rgba(0,0,0,0.35),
-        0 0 0 1px rgba(255,255,255,0.08) inset;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
 
-    .result-card:hover i{
-      opacity: 1;
-      transform: translateY(-1px);
-    }
-
-    .result-card--disabled{
-      cursor: default;
-      pointer-events: auto;
-    }
-
-    /* 向下箭头呼吸 */
-    .pulse-arrow{
-      animation: pulseArrow 2.2s ease-in-out infinite;
-      filter: drop-shadow(0 10px 30px rgba(255,255,255,.10));
-    }
-    @keyframes pulseArrow{
-      0%, 100% { transform: translateY(0); opacity: .9; }
-      50% { transform: translateY(10px); opacity: .55; }
-    }
+    /* 滚动条美化 */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
     /* Grain */
     .grain{
       pointer-events:none;
       position: fixed;
       inset: -40%;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-      opacity: .06;
-      transform: translateZ(0);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      opacity: .04;
       mix-blend-mode: overlay;
     }
 
-    @media (prefers-reduced-motion: reduce){
-      html { scroll-behavior: auto; }
-      .pulse-arrow{ animation: none; }
-      .glass-hover::after{ transition: none; }
-      .glass-hover::before{ transition: none; opacity: 1; }
-      .result-card::before{ transition: none; opacity: 1; }
-      .reveal{ transition: none; opacity: 1; transform: none; }
+    .pulse-arrow{ animation: pulseArrow 2.2s ease-in-out infinite; }
+    @keyframes pulseArrow{
+      0%, 100% { transform: translateY(0); opacity: .9; }
+      50% { transform: translateY(10px); opacity: .55; }
     }
   </style>
 </head>
@@ -208,192 +126,137 @@
 <body>
   <div class="grain"></div>
 
-  <!-- 背景液态气泡（视差） -->
-  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
-    <div class="absolute -top-24 left-1/6 h-72 w-72 rounded-full bg-white/10 blur-3xl" data-parallax="0.03"></div>
-    <div class="absolute top-1/4 right-1/12 h-80 w-80 rounded-full bg-cyan-300/10 blur-3xl" data-parallax="0.05"></div>
-    <div class="absolute bottom-[-220px] left-1/3 h-96 w-96 rounded-full bg-blue-300/8 blur-3xl" data-parallax="0.04"></div>
-  </div>
-
-  <!-- 顶部导航（极简） -->
+  <!-- 顶部导航 -->
   <header class="sticky top-0 z-50">
     <div class="mx-auto max-w-6xl px-6 lg:px-12">
       <div class="mt-3 rounded-2xl border border-white/10 bg-black/20 backdrop-blur-xl">
         <div class="flex items-center justify-between px-4 py-3 lg:px-6">
           <div class="flex items-center gap-2">
-            <div class="h-8 w-8 rounded-full border border-white/10 bg-white/5 shadow-softGlow"></div>
+            <div class="h-8 w-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center overflow-hidden">
+                <img src="assets/avatar.jpg" class="w-full h-full object-cover">
+            </div>
             <div class="leading-tight">
               <div class="text-sm text-white/90 font-medium">李一凡</div>
-              <div class="text-xs text-white/55">个人简历</div>
+              <div class="text-xs text-white/40 uppercase tracking-tighter">Portfolio</div>
             </div>
           </div>
-
           <nav class="hidden sm:flex items-center gap-5 text-xs text-white/65">
-            <a href="#education" class="hover:text-white/90 transition duration-500 ease-out">教育背景</a>
-            <a href="#internship" class="hover:text-white/90 transition duration-500 ease-out">实习经历</a>
-            <a href="#campus" class="hover:text-white/90 transition duration-500 ease-out">校园经历</a>
-            <a href="#videos" class="hover:text-white/90 transition duration-500 ease-out">视频作品</a>
-            <a href="#skills" class="hover:text-white/90 transition duration-500 ease-out">个人技能</a>
+            <a href="#education" class="hover:text-white transition duration-300">教育背景</a>
+            <a href="#internship" class="hover:text-white transition duration-300">实习经历</a>
+            <a href="#campus" class="hover:text-white transition duration-300">校园经历</a>
+            <a href="#videos" class="hover:text-white transition duration-300">视频作品</a>
+            <a href="#skills" class="hover:text-white transition duration-300">个人技能</a>
           </nav>
-
-          <a href="#internship"
-             class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/80
-                    hover:bg-white/10 hover:border-white/20 hover:shadow-softGlow transition duration-500 ease-out">
-            <span>查看经历</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="opacity-90">
-              <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+          <a href="mailto:724108384@qq.com" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs hover:bg-white/10 transition duration-300">发起联络</a>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- 第一部分：Hero 首屏（全屏高度） -->
-    <section class="relative min-h-[100svh] flex items-center">
-      <div class="mx-auto max-w-6xl px-6 lg:px-12 w-full">
-        <div class="grid items-center gap-10 lg:grid-cols-12">
-          <div class="lg:col-span-12">
-            <div class="flex flex-col items-center text-center">
-              <!-- 头像占位符（圆形 + 发光） -->
-              <div class="relative reveal glass-hover rounded-full p-2"
-                   data-parallax="0.02">
-                <div class="absolute inset-[-20%] rounded-full bg-white/10 blur-3xl"></div>
-                <div class="h-28 w-28 sm:h-32 sm:w-32 rounded-full
-                            border border-white/15 bg-white/5 backdrop-blur-xl
-                            shadow-softGlow flex items-center justify-center relative z-10 overflow-hidden">
-                  <img src="assets/avatar.jpg" alt="头像" class="h-full w-full object-cover" />
-                </div>
-              </div>
-
-              <div class="mt-7 reveal">
-                <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight">李一凡</h1>
-                <div class="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl px-4 py-2 text-xs sm:text-sm text-white/75">
-                  <span class="text-white/90">四川外国语大学硕士</span>
-                  <span class="text-white/40">|</span>
-                  <span class="text-white/85">2027届毕业生</span>
-                </div>
-
-                <p class="mt-5 max-w-2xl text-base sm:text-lg text-white/70 leading-relaxed mx-auto">
-                  深耕品牌营销与跨界联动，具备扎实的新媒体内容运营、品牌策划与数据分析能力。
-                </p>
-              </div>
-
-              <!-- 联系方式（极简 Icon 悬浮展示） -->
-              <div class="mt-7 reveal">
-                <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
-                  <a href="tel:15523020587"
-                     class="glass-hover group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl
-                            px-5 py-3 sm:px-6 sm:py-4 w-full sm:w-auto
-                            hover:bg-white/10 hover:border-white/20 transition duration-500 ease-out">
-                    <div class="flex items-center gap-3 justify-center">
-                      <i class="fa-solid fa-phone text-white/75 text-sm"></i>
-                      <div class="text-sm sm:text-base text-white/85">
-                        电话 <span class="text-white/95 font-medium">155-2302-0587</span>
-                      </div>
-                    </div>
-                  </a>
-
-                  <a href="mailto:724108384@qq.com"
-                     class="glass-hover group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl
-                            px-5 py-3 sm:px-6 sm:py-4 w-full sm:w-auto
-                            hover:bg-white/10 hover:border-white/20 transition duration-500 ease-out">
-                    <div class="flex items-center gap-3 justify-center">
-                      <i class="fa-solid fa-envelope text-white/75 text-sm"></i>
-                      <div class="text-sm sm:text-base text-white/85">
-                        邮箱 <span class="text-white/95 font-medium">724108384@qq.com</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <!-- 底部呼吸闪烁向下箭头 -->
-              <div class="mt-10 sm:mt-12 flex flex-col items-center reveal">
-                <a href="#education"
-                   class="pulse-arrow inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-xl
-                          h-12 w-12 hover:bg-white/10 hover:border-white/20 transition duration-500 ease-out"
-                   aria-label="向下滚动">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-white/85">
-                    <path d="M12 5v14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M19 12l-7 7-7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </a>
-                <div class="mt-3 text-xs text-white/45 tracking-wide">SCROLL</div>
-              </div>
+    <!-- 第一部分：Hero -->
+    <section class="relative min-h-[90svh] flex items-center">
+      <div class="mx-auto max-w-6xl px-6 lg:px-12 w-full text-center">
+        <div class="inline-block relative reveal">
+            <div class="absolute inset-[-10%] rounded-full bg-white/5 blur-3xl"></div>
+            <div class="h-28 w-28 sm:h-32 sm:w-32 rounded-full border border-white/15 bg-white/5 shadow-softGlow flex items-center justify-center relative z-10 overflow-hidden">
+                <img src="assets/avatar.jpg" alt="头像" class="h-full w-full object-cover" />
             </div>
+        </div>
+        <div class="mt-8 reveal">
+          <h1 class="text-4xl sm:text-6xl font-semibold tracking-tight">李一凡</h1>
+          <div class="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs sm:text-sm text-white/70">
+            <span class="text-white/90">四川外国语大学硕士</span>
+            <span class="text-white/20">|</span>
+            <span class="text-white/80">2027届毕业生</span>
           </div>
+          <p class="mt-6 max-w-2xl text-base sm:text-lg text-white/50 leading-relaxed mx-auto">
+            深耕品牌营销与跨界联动，具备扎实的新媒体内容运营、品牌策划与数据分析能力。
+          </p>
+        </div>
+        
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
+            <a href="tel:15523020587" class="glass-hover flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all">
+                <i class="fa-solid fa-phone text-white/40 text-sm"></i>
+                <span class="text-sm">155-2302-0587</span>
+            </a>
+            <a href="mailto:724108384@qq.com" class="glass-hover flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all">
+                <i class="fa-solid fa-envelope text-white/40 text-sm"></i>
+                <span class="text-sm">724108384@qq.com</span>
+            </a>
+        </div>
+
+        <div class="mt-16 flex flex-col items-center reveal">
+            <a href="#education" class="pulse-arrow h-12 w-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+            </a>
         </div>
       </div>
     </section>
 
-   <!-- 第二部分：教育背景 (校徽升级版) -->
-    <section id="education" class="py-20 sm:py-28">
+    <!-- 第二部分：教育背景 -->
+    <section id="education" class="py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-6 lg:px-12">
-        <div class="flex items-end justify-between gap-6">
-          <div class="max-w-2xl reveal">
-            <div class="text-xs tracking-[0.2em] text-white/45">EDUCATION</div>
-            <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight">教育背景</h2>
-          </div>
+        <div class="reveal">
+          <div class="text-xs tracking-[0.3em] text-white/30 uppercase">Education</div>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight">教育背景</h2>
         </div>
     
-        <div class="relative mt-12">
-          <div class="absolute left-3 sm:left-5 top-0 bottom-0 w-px bg-white/10"></div>
+        <div class="relative mt-16">
+          <!-- 增强质感的时间轴线 -->
+          <div class="absolute left-6 sm:left-7 top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent"></div>
     
-          <div class="space-y-10 sm:space-y-12">
+          <div class="space-y-16">
+            <!-- 教育项 1 -->
             <article class="relative reveal">
-              <div class="flex gap-6">
-                <div class="relative flex-shrink-0">
-                  <div class="mt-2 h-10 w-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-softGlow"></div>
+              <div class="flex gap-8">
+                <!-- 校徽展示区 -->
+                <div class="relative flex-shrink-0 z-10">
+                  <div class="h-12 w-12 sm:h-14 sm:w-14 rounded-full border border-white/15 bg-white/5 backdrop-blur-xl shadow-softGlow flex items-center justify-center overflow-hidden p-1">
+                    <img src="assets/校徽1.jpg" alt="四川外国语大学" class="w-full h-full object-contain" onerror="this.style.display='none'">
+                  </div>
                 </div>
-                <div class="glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-innerGlow p-5 sm:p-7 w-full">
-                  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
-                    <div class="text-white/90 font-medium">
-                      2024.09 至今 | 四川外国语大学 | 新闻传播学 | 硕士研究生
-                    </div>
+                <!-- 内容区 -->
+                <div class="glass-hover rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8 w-full shadow-innerGlow">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/5 pb-4 mb-5">
+                    <h3 class="text-lg font-medium text-white/90">四川外国语大学 | 新闻传播学 | 硕士研究生</h3>
+                    <span class="text-xs text-white/30 tracking-widest font-mono">2024.09 - 至今</span>
                   </div>
-    
-                  <div class="mt-4">
-                    <div class="text-sm text-white/65">主修课程：</div>
-                    <div class="mt-2 text-sm text-white/85 leading-relaxed">
-                      新闻传播理论、新闻传播实务、新闻传播史、新闻传播学研究方法、新媒体研究。
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-2">
+                        <div class="text-[10px] uppercase tracking-widest text-white/30">Courses</div>
+                        <p class="text-sm text-white/60 leading-relaxed">新闻传播理论、实务、研究方法、新媒体研究等。</p>
                     </div>
-                  </div>
-    
-                  <div class="mt-5">
-                    <div class="text-sm text-white/65">所获荣誉：</div>
-                    <div class="mt-2 text-sm text-white/85 leading-relaxed">
-                      2024-2025年学业三等奖学金、2025-2026年学业二等奖学金、2025年四川外国语大学团课大赛三等奖、第七届重庆西部国际投资贸易洽谈会优秀志愿者。
+                    <div class="space-y-2">
+                        <div class="text-[10px] uppercase tracking-widest text-white/30">Honors</div>
+                        <p class="text-sm text-white/60 leading-relaxed">2024-2026年学业一/二等奖学金、团课大赛三等奖、优办志愿者。</p>
                     </div>
                   </div>
                 </div>
               </div>
             </article>
     
+            <!-- 教育项 2 -->
             <article class="relative reveal">
-              <div class="flex gap-6">
-                <div class="relative flex-shrink-0">
-                  <div class="mt-2 h-10 w-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-softGlow"></div>
+              <div class="flex gap-8">
+                <div class="relative flex-shrink-0 z-10">
+                  <div class="h-12 w-12 sm:h-14 sm:w-14 rounded-full border border-white/15 bg-white/5 backdrop-blur-xl shadow-softGlow flex items-center justify-center overflow-hidden p-1">
+                    <img src="assets/校徽2.jpg" alt="西安外国语大学" class="w-full h-full object-contain" onerror="this.style.display='none'">
+                  </div>
                 </div>
-                <div class="glass-hover rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-innerGlow p-5 sm:p-7 w-full">
-                  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
-                    <div class="text-white/90 font-medium">
-                      2019.09-2023.06 | 西安外国语大学 | 英语 | 本科
-                    </div>
+                <div class="glass-hover rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8 w-full shadow-innerGlow">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/5 pb-4 mb-5">
+                    <h3 class="text-lg font-medium text-white/90">西安外国语大学 | 英语 | 本科</h3>
+                    <span class="text-xs text-white/30 tracking-widest font-mono">2019.09 - 2023.06</span>
                   </div>
-    
-                  <div class="mt-4">
-                    <div class="text-sm text-white/65">主修课程：</div>
-                    <div class="mt-2 text-sm text-white/85 leading-relaxed">
-                      高级英语阅读、高级英语写作、高级英语翻译、应用心理学、英语教学法。
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-2">
+                        <div class="text-[10px] uppercase tracking-widest text-white/30">Courses</div>
+                        <p class="text-sm text-white/60 leading-relaxed">高级英语阅读/写作、翻译、应用心理学、英语教学法。</p>
                     </div>
-                  </div>
-    
-                  <div class="mt-5">
-                    <div class="text-sm text-white/65">所获荣誉：</div>
-                    <div class="mt-2 text-sm text-white/85 leading-relaxed">
-                      获2020-2021年、2021-2022年个人二等奖学金、2021年全国大学生英语竞赛二等奖、2020年大学生创新创业项目校级立项、西安外国语大学多语种翻译大赛三等奖、第十四届全国运动会开幕式演员及优秀志愿者。
+                    <div class="space-y-2">
+                        <div class="text-[10px] uppercase tracking-widest text-white/30">Honors</div>
+                        <p class="text-sm text-white/60 leading-relaxed">个人二等奖学金、全国大学生英语竞赛二等奖、多语种翻译大赛奖项。</p>
                     </div>
                   </div>
                 </div>
