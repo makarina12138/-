@@ -101,3 +101,33 @@ footer{width:min(1240px,calc(100% - 48px));margin:0 auto;padding:25px 0 40px;dis
 
 @media(max-width:820px){.hero{padding-top:60px;min-height:calc(100svh - 72px)}.hero-center{padding:20px 0 52px}.hero .portrait-wrap{width:112px;padding:5px}.hero .portrait-card{width:102px;height:102px}.hero h1{margin-top:22px;font-size:48px}.hero .hero-credential{margin-top:18px}.hero .hero-summary{max-width:560px}}
 @media(max-width:520px){.hero{padding-top:32px}.hero-center{padding:18px 0 40px}.hero .portrait-wrap{width:98px;padding:4px}.hero .portrait-card{width:90px;height:90px}.hero h1{margin-top:18px;font-size:42px}.hero .hero-credential{display:inline-flex;margin-top:15px;padding:10px 14px;font-size:11px}.hero .hero-credential i{height:15px}.hero .hero-summary{margin-top:20px;padding:0 4px;font-size:13px;line-height:1.75}.hero .metrics{margin-top:27px;gap:18px 0}.hero .metrics div{padding:0 8px}.hero .metrics div:nth-child(odd){border-left:0}.hero .metrics div:nth-child(even){border-left:1px solid var(--line)}.hero .metrics strong{font-size:19px}.hero .metrics span{font-size:10px}.hero .hero-actions{margin-top:26px;gap:9px}.hero .btn{min-width:120px;padding:13px 17px;font-size:13px}.hero .resume-btn{min-width:138px}}
+
+/* Taller media keeps each cover's original orientation and fills its row. */
+.timeline{grid-template-columns:minmax(0,1fr)}
+.timeline>.exp-card,.exp-rich,.work-group,.rail-shell{min-width:0;max-width:100%}
+.media-rail{--rail-height:300px}
+.media-rail .rail-card{height:var(--rail-height)}
+.media-rail .rail-card.landscape{width:calc(var(--rail-height) * 1.77778)}
+.media-rail .rail-card.wide{width:calc(var(--rail-height) * 2)}
+.media-rail .rail-card.square{width:var(--rail-height)}
+.media-rail .rail-card.portrait{--portrait-ratio:.5625;width:calc(var(--rail-height) * var(--portrait-ratio))}
+#exp-nio .media-rail[aria-label^="自养号内容"]{--rail-height:440px}
+#exp-nio .rail-card.portrait[data-poster$="self1-cover.jpg"]{--portrait-ratio:.75}
+#exp-miniso .rail-card.portrait{--portrait-ratio:.46125}
+#practice-auto .media-rail,#practice-feed .media-rail{--rail-height:510px}
+
+/* Compact account matrix and visible reference links. */
+#exp-nio .account-grid{width:min(760px,100%);margin-inline:auto}
+#exp-panda .link-gallery{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;overflow:visible;padding:5px 0 0;scroll-snap-type:none}
+#exp-panda .link-gallery a{grid-column:span 2;min-width:0;min-height:140px}
+#exp-panda .link-gallery a:last-child{grid-column:3/span 2}
+.campus-news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.campus-news-grid a{display:flex;align-items:center;min-height:72px;padding:16px 18px;border:1px solid var(--line);border-radius:15px;background:#fff;color:#514c46;font-size:12px;line-height:1.55;transition:transform .2s,box-shadow .2s,color .2s}
+.campus-news-grid a:hover{transform:translateY(-2px);box-shadow:0 9px 24px rgba(54,44,34,.08);color:#956f4e}
+.campus-news-more{margin-top:16px;padding-top:0}
+.campus-news-more summary{padding:16px 18px;border-radius:15px;background:#f1eae1;font-weight:600}
+.campus-news-more .campus-news-grid{margin-top:13px}
+
+@media(max-width:1050px){#practice-auto .media-rail,#practice-feed .media-rail{--rail-height:460px}#exp-nio .media-rail[aria-label^="自养号内容"]{--rail-height:400px}}
+@media(max-width:820px){.media-rail{--rail-height:270px}#practice-auto .media-rail,#practice-feed .media-rail{--rail-height:420px}#exp-nio .media-rail[aria-label^="自养号内容"]{--rail-height:380px}.campus-news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#exp-panda .link-gallery{grid-template-columns:repeat(4,minmax(0,1fr))}#exp-panda .link-gallery a:last-child{grid-column:2/span 2}}
+@media(max-width:520px){.media-rail{--rail-height:235px}#practice-auto .media-rail,#practice-feed .media-rail{--rail-height:395px}#exp-nio .media-rail[aria-label^="自养号内容"]{--rail-height:350px}.campus-news-grid{grid-template-columns:1fr}.campus-news-grid a{min-height:60px}.campus-news-more summary{font-size:12px}#exp-panda .link-gallery{grid-template-columns:1fr}#exp-panda .link-gallery a,#exp-panda .link-gallery a:last-child{grid-column:auto;min-height:115px}}
