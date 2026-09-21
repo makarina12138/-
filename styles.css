@@ -136,3 +136,16 @@ footer{width:min(1240px,calc(100% - 48px));margin:0 auto;padding:25px 0 40px;dis
 @media(max-width:1050px){#practice-auto .media-rail,#practice-feed .media-rail{--rail-height:460px}#exp-nio .media-rail[aria-label^="自养号内容"]{--rail-height:400px}}
 @media(max-width:820px){.media-rail{--rail-height:270px}#practice-auto .media-rail,#practice-feed .media-rail{--rail-height:420px}#practice-auto .media-rail .rail-card.portrait,#practice-feed .media-rail .rail-card.portrait{flex-basis:min(76vw,420px);width:min(76vw,420px)}#exp-nio .media-rail[aria-label^="自养号内容"]{--rail-height:380px}.campus-news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#exp-panda .link-gallery{grid-template-columns:repeat(4,minmax(0,1fr))}#exp-panda .link-gallery a:last-child{grid-column:2/span 2}}
 @media(max-width:520px){.media-rail{--rail-height:235px}#practice-auto .media-rail,#practice-feed .media-rail{--rail-height:395px}#exp-nio .media-rail[aria-label^="自养号内容"]{--rail-height:350px}#exp-nio .account-grid{grid-template-columns:minmax(0,1fr)}.campus-news-grid{grid-template-columns:1fr}.campus-news-grid a{min-height:60px}.campus-news-more summary{font-size:12px}#exp-panda .link-gallery{grid-template-columns:1fr}#exp-panda .link-gallery a,#exp-panda .link-gallery a:last-child{grid-column:auto;min-height:115px}}
+
+/* Horizontal galleries stay inside their section; the page and navigation do not scroll sideways. */
+html,body{max-width:100%;overscroll-behavior-x:none}
+html{overflow-x:clip}
+main{width:100%;max-width:100%;overflow-x:clip}
+.site-header,.nav,.section,.timeline,.exp-card,.project-block,.campus-track{min-width:0;max-width:100%}
+.nav{overscroll-behavior-x:contain}
+.rail-shell{width:100%;max-width:100%;min-width:0;overflow:clip;contain:inline-size}
+.media-rail{width:100%;max-width:100%;min-width:0;overscroll-behavior-x:contain}
+#exp-nio .account-grid{max-width:100%;overflow:clip}
+#campus .campus-news-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:100%;overflow:clip}
+#campus .campus-news-grid a{min-width:0;overflow-wrap:anywhere}
+@media(max-width:600px){#campus .campus-news-grid{gap:6px}#campus .campus-news-grid a{min-height:100px;padding:10px 7px;font-size:10px;line-height:1.45}}
